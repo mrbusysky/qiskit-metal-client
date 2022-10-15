@@ -35,47 +35,47 @@ the Qiskit MetalGUI element. This is a simple example that makes a qubit.
 $ python
 ```
 ```python
->>> from qiskit_metal import designs, draw, MetalGUI, Dict, open_docs
->>> design = designs.DesignPlanar()
->>> design.overwrite_enabled = True
->>> design.chips.main
->>> design.chips.main.size.size_x = '11mm'
->>> design.chips.main.size.size_y = '9mm'
->>> gui = MetalGUI(design)
+from qiskit_metal import designs, draw, MetalGUI, Dict, open_docs
+design = designs.DesignPlanar()
+design.overwrite_enabled = True
+design.chips.main
+design.chips.main.size.size_x = '11mm'
+design.chips.main.size.size_y = '9mm'
+gui = MetalGUI(design)
 ```
 #### Launch the Qiskit Metal GUI to interactively view, edit, and simulate a QDesign:
 ```python
->>> gui = MetalGUI(design)
+gui = MetalGUI(design)
 ```
 #### Let's create a new qubit (a transmon) by creating an object of this class.
 ```python
->>> from qiskit_metal.qlibrary.qubits.transmon_pocket import TransmonPocket
->>> q1 = TransmonPocket(design, 'Q1', options=dict(connection_pads=dict(a=dict())))
->>> gui.rebuild()
->>> gui.edit_component('Q1')
->>> gui.autoscale()
+from qiskit_metal.qlibrary.qubits.transmon_pocket import TransmonPocket
+q1 = TransmonPocket(design, 'Q1', options=dict(connection_pads=dict(a=dict())))
+gui.rebuild()
+gui.edit_component('Q1')
+gui.autoscale()
 ```
 #### Change options.
 ```python
->>> q1.options.pos_x = '0.5 mm'
->>> q1.options.pos_y = '0.25 mm'
->>> q1.options.pad_height = '90um'
->>> q1.options.pad_width  = '455um'
->>> q1.options.pad_gap    = '30 um'
+q1.options.pos_x = '0.5 mm'
+q1.options.pos_y = '0.25 mm'
+q1.options.pad_height = '90um'
+q1.options.pad_width  = '455um'
+q1.options.pad_gap    = '30 um'
 ```
 #### Update the component geometry after changing the options.
 ```python
->>> gui.rebuild()
+gui.rebuild()
 ```
 ![Example_Image!](https://raw.githubusercontent.com/Qiskit/qiskit-metal/main/docs/images/1_1_Birds_eye_view_of_Qiskit_Metal_example_image.jpg 'Example_Image') 
 #### Get a list of all the qcomponents in QDesign and then zoom on them.
 ```python
->>> all_component_names = design.components.keys()
->>> gui.zoom_on_components(all_component_names)
+all_component_names = design.components.keys()
+gui.zoom_on_components(all_component_names)
 ```
 #### Closing the Qiskit Metal GUI.
 ```python
->>> gui.main_window.close()
+gui.main_window.close()
 ```
 
 A script is available [here](https://qiskit.org/documentation/metal/tut/overview/1.1%20High%20Level%20Demo%20of%20Qiskit%20Metal.html), where we also show the overview of Qiskit Metal.
